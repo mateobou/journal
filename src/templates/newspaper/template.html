@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+    background: whitesmoke;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: black;
+    margin: 0;
+    padding: 2rem;
+    line-height: 1.6;
+  }
+
+  .newspaper {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid lightgrey;
+  }
+
+  .headline {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-bottom: 2px solid black;
+    margin-bottom: 1rem;
+  }
+
+  .subheadline {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .article-meta {
+    font-size: 0.9rem;
+    color: darkslategray;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: 0.5rem;
+  }
+
+  .columns {
+    column-count: 2;
+    column-gap: 2rem;
+    text-align: justify;
+  }
+
+  .dropcap::first-letter {
+    float: left;
+    font-size: 3.5rem;
+    line-height: 1;
+    padding-right: 8px;
+    font-weight: bold;
+  }
+
+  .quote {
+    font-style: italic;
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid gray;
+    color: gray;
+  }
+  </style>
+  <link rel="stylesheet" href="{{styles}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}}</title>
+</head>
+
+<body>
+  <div class="newspaper">
+    <div class="headline">{{title}}</div>
+    <div class="subheadline">{{subtitle}}</div>
+    <div class="article-meta">{{date}} – {{author}}</div>
+
+    <div class="columns">
+      <div class="dropcap">
+        {{{content}}}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
