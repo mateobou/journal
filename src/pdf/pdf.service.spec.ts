@@ -41,7 +41,7 @@ describe('PdfService', () => {
 
     (puppeteer.launch as jest.Mock).mockResolvedValue(browserMock);
 
-    const result = await service.createPdf({ ...mockData, css: '' });
+    const result = await service.createPdf({ ...mockData });
 
     expect(fs.readFileSync).toHaveBeenCalled(); // Le template est bien lu
     expect(puppeteer.launch).toHaveBeenCalled();
