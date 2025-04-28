@@ -14,7 +14,6 @@ describe('PdfController', () => {
     date: '2025-04-18',
     author: 'Jane Doe',
     content: 'This is a sample article content.',
-    name: 'mock-article',
     css: ''
   };
 
@@ -46,7 +45,7 @@ describe('PdfController', () => {
         set: jest.fn().mockReturnThis(),
       } as unknown as Response;
 
-      const result = await pdfController.generatePdf(mockPdfData, mockResponse);
+      const result = await pdfController.generatePdf({ data: [mockPdfData] }, mockResponse);
 
       expect(pdfService.createPdf).toHaveBeenCalledWith({ ...mockPdfData });
       expect(result).toBe(mockPdfPath);

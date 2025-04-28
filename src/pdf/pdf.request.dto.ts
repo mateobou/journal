@@ -13,12 +13,10 @@ export class PdfRequestDto {
 
   @IsString()
   readonly author: string;
+  @IsOptional()
 
   @IsString()
   readonly content: string;
-
-  @IsString()
-  readonly name: string;
 
   @IsString()
   @IsOptional()
