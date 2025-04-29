@@ -12,6 +12,7 @@ export class PdfService {
     date: string;
     author: string;
     content: string;
+
   }>): Promise<StreamableFile> {
     const templateHtml = fs.readFileSync(path.join(process.cwd(), "src/templates/newspaper/template.html"), 'utf8');
     const template = handlebars.compile(templateHtml);
