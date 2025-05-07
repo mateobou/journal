@@ -1,24 +1,9 @@
 import { Controller, Post, Res, Body, Get, Query, Req, BadRequestException, InternalServerErrorException } from '@nestjs/common';
-import { Response, Request } from 'express';
+import { Response } from 'express';
 import { PdfService } from './pdf.service';
 import path from 'path';
 import * as fs from 'fs';
 import { PdfRequestDto } from './pdf.request.dto';
-
-export type PdfData = {
-  title: string;
-  subtitle: string;
-  date: string;
-  author: string;
-  content: string;
-  css: string;
-}
-
-export interface PdfRequest extends Request {
-  body: {
-    data: PdfData;
-  };
-}
 
 @Controller("/api/")
 export class PdfController {

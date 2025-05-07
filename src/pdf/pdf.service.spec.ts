@@ -4,7 +4,15 @@ import * as fs from 'fs';
 import * as puppeteer from 'puppeteer';
 
 jest.mock('fs');
-jest.mock('puppeteer');
+const mockPuppeteer = {
+  launch: jest.fn().mockResolvedValue({
+    newPage: jest.fn().mockResolvedValue({
+      goto: jest.fn(),
+      pdf: jest.fn(),
+    }),
+    close: jest.fn(),
+  }),
+};
 
 describe('PdfService', () => {
   let service: PdfService;
@@ -41,9 +49,9 @@ describe('PdfService', () => {
 
     (puppeteer.launch as jest.Mock).mockResolvedValue(browserMock);
 
-    const result = await service.createPdf({ ...mockData });
+    const result = await service.createPdf([mockData]);
 
-    expect(fs.readFileSync).toHaveBeenCalled(); // Le template est bien lu
+    expect(fs.readFileSync).toHaveBeenCalled();
     expect(puppeteer.launch).toHaveBeenCalled();
     expect(pageMock.setContent).toHaveBeenCalled();
     expect(pageMock.pdf).toHaveBeenCalled();
